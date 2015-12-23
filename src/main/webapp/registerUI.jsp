@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -54,7 +55,7 @@
         </div>
         <input class="btn btn-lg btn-primary btn-block" type="submit" value="注册">
         <div class="social-login clearfix">
-            <a class="btn btn-primary twitter" href="${pageContext.request.contextPath}/index" >返回首页</a>
+            <a class="btn btn-primary twitter" href="${pageContext.request.contextPath}/" >返回首页</a>
         </div>
         <p>
             已经有账户了？
@@ -64,4 +65,20 @@
 </div>
 <!-- End Signup Screen -->
 </body>
+
+<c:if test="${result!=null}">
+    <script>
+        $().ready(function(){
+            var success=${result.success};
+            var msg='${result.msg}';
+            $._messengerDefaults = {
+                extraClasses: 'messenger-fixed messenger-theme-air  messenger-on-top messenger-on-left'
+            }
+            $.globalMessenger().post({  message:"提示："+ msg,
+                type: "error",
+                showCloseButton: true})
+
+        })
+    </script>
+</c:if>
 </html>

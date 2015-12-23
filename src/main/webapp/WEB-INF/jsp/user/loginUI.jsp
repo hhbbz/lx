@@ -50,7 +50,7 @@
                 extraClasses: 'messenger-fixed messenger-theme-air  messenger-on-top messenger-on-left'
             }
             $.globalMessenger().post({  message:"提示："+ msg,
-                type: type,
+                type: "error",
                 showCloseButton: true})
 
         })

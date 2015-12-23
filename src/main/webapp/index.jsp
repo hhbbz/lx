@@ -108,7 +108,7 @@ Fixed Navigation
                 <li><a href="#social">关于</a></li>
                 <li><a href="#contact">点餐</a></li>
                 <li><a href="#" id="cart">购物车</a></li>
-                <li><a href="registerUI.jsp" id="register">注册</a></li>
+                <li><a href="#" id="register">注册</a></li>
             </ul>
         </nav>
         <!-- /main nav -->
@@ -485,6 +485,9 @@ End Fixed Navigation
                 message: "请填写你需要订购的物品"
             }
         });
+        $('a#register').on('click' , function(){
+            window.location.href = "${pageContext.request.contextPath}/member/registerUI" ;
+        })
     });
     function list(pages) {
         $("#product_all").empty()

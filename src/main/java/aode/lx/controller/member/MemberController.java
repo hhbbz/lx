@@ -36,7 +36,7 @@ public class MemberController {
             return "redirect:loginUI";
         }catch (Exception e){
             e.printStackTrace();
-            redirectAttributes.addFlashAttribute("result", new AjaxResult(false, "注册失败"));
+            redirectAttributes.addFlashAttribute("result", new AjaxResult(false, "内部错误，注册失败"));
         }
         redirectAttributes.addFlashAttribute("result", new AjaxResult(false, "该用户名已存在"));
         return "redirect:registerUI";
