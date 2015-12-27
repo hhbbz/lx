@@ -6,6 +6,7 @@ import aode.lx.model.Member;
 import aode.lx.service.CartService;
 import aode.lx.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -34,11 +35,14 @@ public class MemberController {
             this.cartService.save(cart);
             redirectAttributes.addFlashAttribute("result", new AjaxResult(true, "注册成功"));
             return "redirect:loginUI";
-        }catch (Exception e){
+        } catch (DataIntegrityViolationException d) {
+            d.printStackTrace();
+            redirectAttributes.addFlashAttribute("result", new AjaxResult(false, "该用户名已存在"));
+        } catch (Exception e){
             e.printStackTrace();
-            redirectAttributes.addFlashAttribute("result", new AjaxResult(false, "内部错误，注册失败"));
+            redirectAttributes.addFlashAttribute("result", new AjaxResult(false, "注册格式错误"));
         }
-        redirectAttributes.addFlashAttribute("result", new AjaxResult(false, "该用户名已存在"));
+//        redirectAttributes.addFlashAttribute("result", new AjaxResult(false, "该用户名已存在"));
         return "redirect:registerUI";
     }
     @RequestMapping("login")
