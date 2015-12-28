@@ -42,3 +42,4 @@
 <script src="${pageContext.request.contextPath}/resources/admin/javascripts/jquery.sparkline.min.js" type="text/javascript"></script>
 <script src="${pageContext.request.contextPath}/resources/admin/javascripts/main.js" type="text/javascript"></script>
 <script src="${pageContext.request.contextPath}/resources/admin/javascripts/respond.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/resources/admin/javascripts/validate-methods.js" type="text/javascript"></script>

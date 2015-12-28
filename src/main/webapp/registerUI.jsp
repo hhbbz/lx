@@ -15,6 +15,7 @@
     <link href="${pageContext.request.contextPath}/resources/lib/messenger/build/css/messenger.css"  rel="stylesheet" type="text/css" />
     <link href="${pageContext.request.contextPath}/resources/lib/messenger/build/css/messenger-theme-air.css"  rel="stylesheet" type="text/css" />
     <script src="${pageContext.request.contextPath}/resources/admin/javascripts/jquery.validate.js" type="text/javascript"></script>
+    <script src="${pageContext.request.contextPath}/resources/admin/javascripts/validate-methods.js" type="text/javascript"></script>
     <link href="${pageContext.request.contextPath}/resources/admin/stylesheets/font-awesome.css" media="all" rel="stylesheet" type="text/css" />
     <link href="${pageContext.request.contextPath}/resources/admin/stylesheets/style.css" media="all" rel="stylesheet" type="text/css" />
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
@@ -22,7 +23,7 @@
 <body class="login2">
 <!-- Signup Screen -->
 <div class="login-wrapper">
-    <form action="${pageContext.request.contextPath}/member/register" method="post" id="register_form">
+    <form action="${pageContext.request.contextPath}/member/register" method="post" novalidate id="register_form">
         <div class="form-group">
             <div class="input-group">
                 <span class="input-group-addon"><i class="icon-user"></i></span>
@@ -32,7 +33,13 @@
         <div class="form-group">
             <div class="input-group">
                 <span class="input-group-addon"><i class="icon-lock"></i></span>
-                <input class="form-control" type="password" required name="password" placeholder="请输入密码" >
+                <input class="form-control" type="password" id="password" required name="password" placeholder="请输入密码" >
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="icon-lock"></i></span>
+                <input class="form-control" type="password" id="confirm_password" required name="confirm_password" placeholder="确认密码" >
             </div>
         </div>
         <div class="form-group">
@@ -65,7 +72,52 @@
 </div>
 <!-- End Signup Screen -->
 </body>
-
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#register_form").validate({
+            rules: {
+                name:"required",
+                loginName: {
+                    required: true,
+                    minlength: 5
+                },
+                phoneNumber: {
+                    isMobile:true
+                },
+                password: {
+                    required: true,
+                    minlength: 6
+                },
+                confirm_password: {
+                    required: true,
+                    minlength: 6,
+                    equalTo: "#password"
+                },
+                email: {
+                    email: true
+                }
+            },
+            messages: {
+                name: "请填写您的姓名",
+                loginName: {
+                    required: "请填写您的登陆名",
+                    minlength: "管理员名长度不能小于5位"
+                },
+                password: {
+                    required: "请填写密码",
+                    minlength: "密码长度不能小于6位"
+                },
+                confirm_password: {
+                    required: "请重复填写密码",
+                    minlength: "密码长度不能小于6位",
+                    equalTo: "两次密码不一致"
+                },
+                phoneNumber: '请输入正确的手机号码格式',
+                email: "请填写正确的邮箱地址"
+            }
+        });
+    });
+</script>
 <c:if test="${result!=null}">
     <script>
         $().ready(function(){
@@ -81,4 +133,5 @@
         })
     </script>
 </c:if>
+
 </html>

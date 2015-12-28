@@ -94,9 +94,7 @@
                         minlength: 5
                     },
                     phoneNumber: {
-                        minlength: 11,
-                        maxlength: 11,
-                        number: true
+                        isMobile:true
                     },
                     password: {
                         required: true,
@@ -126,7 +124,7 @@
                         minlength: "密码长度不能小于6位",
                         equalTo: "两次密码不一致"
                     },
-                    phoneNumber: '请输入正确的手机号码',
+                    phoneNumber: '请输入正确的手机号码格式',
                     email: "请填写正确的邮箱地址"
                 }
             });
