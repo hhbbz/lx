@@ -501,7 +501,12 @@ End Fixed Navigation
                 var j = 0
                 for(var i = 0; i < data.size; i++){
                     $("#product_all").append("<li class=portfolio-item id=product_list"+i+"></li>")
-                    $("#product_list"+i).append("<img alt="+data.content[i].productType.name+" height="+205+" border="+0+" width="+180+" class=img-responsive src="+"/lx/resources/file/product/"+data.content[i].picture+">")
+                    if(data.content[i].picture==null){
+                        $("#product_list"+i).append("<img alt="+data.content[i].productType.name+" height="+370+" border="+0+" width="+280+" class=img-responsive src="+"/lx/resources/template/img/miss.PNG>")
+                    }else{
+                        $("#product_list"+i).append("<img alt="+data.content[i].productType.name+" height="+370+" border="+0+" width="+280+" class=img-responsive src="+"/lx/resources/file/product/"+data.content[i].picture+">")
+                    }
+
                     $("#product_list"+i).append("<figcaption class=mask><h3 id=name"+data.content[i].id+">"+data.content[i].name+"</h3><p>"+data.content[i].productType.name+"</p><p align=right id=money"+data.content[i].id+">￥"+data.content[i].money+"</p></figcaption>")
                     $("#product_list"+i).append("<ul class=external><li>" +
                     "<a class=fancybox title="+data.content[i].name+" data-fancybox-group=works href="+"/lx/resources/file/product/"+data.content[i].picture+"><i class='fa fa-search'></i></a></li><li><a href='javascript:void(0)' onclick='link(\""+data.content[i].id+"\");'  id="+data.content[i].id+"><i class='fa fa-link'></i></a></li></ul>")
