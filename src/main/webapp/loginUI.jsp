@@ -52,7 +52,7 @@
             var success=${result.success};
             var msg='${result.msg}';
             var type="error";
-            if(success=true){
+            if(success==true){
                 type="success"
             }
             $._messengerDefaults = {

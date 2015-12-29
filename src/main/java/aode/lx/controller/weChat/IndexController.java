@@ -22,6 +22,14 @@ import java.util.Map;
 @RequestMapping("weChat/index")
 public class IndexController {
     public static final String TOKEN = "hhbbz";
+
+    /**
+     * 获取微信真实性验证
+     * @param request
+     * @param response
+     * @throws NoSuchAlgorithmException
+     * @throws IOException
+     */
     @RequestMapping(value = "getInfo" , method = RequestMethod.GET)
     public void init(HttpServletRequest request , HttpServletResponse response) throws NoSuchAlgorithmException, IOException {
         String signature = request.getParameter("signature");
@@ -39,6 +47,14 @@ public class IndexController {
             response.getWriter().println(echostr);
         }
     }
+
+    /**
+     * 获取消息
+     * @param request
+     * @param response
+     * @throws IOException
+     * @throws DocumentException
+     */
     @RequestMapping(value = "getInfo" , method = RequestMethod.POST)
     public void getInfo(HttpServletRequest request , HttpServletResponse response) throws IOException, DocumentException {
         Map<String , String> msgMap = MessageUtil.xmlMsgToMsg(request);
