@@ -35,6 +35,9 @@ public class User implements java.io.Serializable{
 
     private String gender; // 性别
 
+    @Pattern(regexp = "^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\\d{8})$")
+    @Length(min = 11, max = 11)
+    @Column(nullable = false)
     private String phoneNumber; // 电话号码
     @Email
     @Length(max = 200)

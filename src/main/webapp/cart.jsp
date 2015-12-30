@@ -216,7 +216,7 @@
     })
     $('a#orders').on('click',function(){
         var number = [] ;
-        for(var i = 0; i < $('input[pid=number]').length; i++){number[i] = $('input[pid=number]')[i].value}
+        for(var i = 0; i < $('input[pid=number]').length; i++){number[i] = $('input[pid=number]')[i].value}  //获取输入框的数值
         var loginName = $('input#loginName').val()
         var name = $('input#name').val()
         var mark = $("div#mark").text()
