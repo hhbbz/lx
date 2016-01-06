@@ -8,6 +8,7 @@ import java.util.Date;
 *@date: 2015/6/19
 *@explain:
 */
+@Cacheable
 @Entity
 @Table(name="product")
 public class Product {

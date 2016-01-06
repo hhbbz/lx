@@ -41,11 +41,18 @@ public class ProductController {
     }
     @RequestMapping("indexPagers")
     @ResponseBody
-    public Page<Product> indexPagers(PageBean pageBean, HttpServletRequest request){
-        PageRequest pageRequest = PageRequestBulider.getPageRequest(request);
+    public long indexPagers(){
+        long count = this.productService.count();
+        if(count%9==0){
+            return count/9;
+        }else {
+            return (count/9)+1;
+        }
+
+/*        PageRequest pageRequest = PageRequestBulider.getPageRequest(request);
         Map<String, SearchFilter> additionalFilters=new HashMap<String, SearchFilter>();
         pageRequest=new PageRequest(0,9,new Sort(new Sort.Order(Sort.Direction.DESC,"date")));
-        return productService.searchPaginated(additionalFilters, pageRequest);
+        return productService.searchPaginated(additionalFilters, pageRequest);*/
     }
     @RequestMapping("pagers/{pages}")
     @ResponseBody

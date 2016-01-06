@@ -430,7 +430,7 @@ End Fixed Navigation
             async : false,
             success : function(data) {
                 $("#pagers").paginate({
-                    count 		: data.totalPages,
+                    count 		: data,
                     start 		: 1,
                     display     : 3,
                     border					: false,

@@ -18,7 +18,7 @@ public class Cart {
     @Column(unique = true)
     private String loginName;
     /*产品*/
-    @OneToMany(mappedBy = "cart",cascade = { CascadeType.ALL },fetch=FetchType.EAGER)
+    @OneToMany(mappedBy = "cart",cascade = { CascadeType.ALL },fetch=FetchType.LAZY)
     private List<MemberProduct> memberProduct = new ArrayList<MemberProduct>();
 
 

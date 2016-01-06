@@ -1,15 +1,13 @@
 package aode.lx.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
 *@author: 黄柏樟
 *@date: 2015/6/19
 *@explain:
 */
+@Cacheable
 @Entity
 @Table(name = "product_type")
 public class ProductType {

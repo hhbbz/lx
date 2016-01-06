@@ -27,7 +27,7 @@ public class Orders {
     /*下单时间*/
     private Date date;
     /*产品*/
-    @OneToMany(mappedBy = "orders",cascade = { CascadeType.ALL },fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "orders",cascade = { CascadeType.ALL },fetch = FetchType.LAZY)
     private List<MemberProductOrders> memberProductOrders = new ArrayList<MemberProductOrders>();
     public Long getId() {
         return id;
