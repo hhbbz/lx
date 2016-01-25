@@ -88,7 +88,7 @@
                                 var id=obj.aData.id;
                                 var render=  '<a target="_blank" href="${pageContext.request.contextPath}/admin/member/show/'+id+'"><i class="icon-search"></i>查看</a>';
                                 render += '&nbsp;/&nbsp;';
-                                render +=  '<a class="edit-row" target="_blank" href="/admin/member/updateUI/'+id+'"><i class="icon-pencil"></i>编辑</a>';
+                                render +=  '<a class="edit-row" target="_blank" href="${pageContext.request.contextPath}/admin/member/updateUI/'+id+'"><i class="icon-pencil"></i>编辑</a>';
                                 render += '&nbsp;/&nbsp;';
                                 render +=  '<a class="delete-row" href="#" name='+id+'><i class="icon-remove"></i>删除</a>';
                                 return render;

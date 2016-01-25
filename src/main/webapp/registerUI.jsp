@@ -23,44 +23,49 @@
 <body class="login2">
 <!-- Signup Screen -->
 <div class="login-wrapper">
-    <form action="${pageContext.request.contextPath}/member/register" method="post" novalidate id="register_form">
-        <div class="form-group">
-            <div class="input-group">
-                <span class="input-group-addon"><i class="icon-user"></i></span>
-                <input class="form-control" type="text"   required name="loginName" onkeyup="this.value=this.value.replace(/[\W]/g,'')" placeholder="登录账号名不能为中文" />
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="input-group">
-                <span class="input-group-addon"><i class="icon-lock"></i></span>
-                <input class="form-control" type="password" id="password" required name="password" placeholder="请输入密码" >
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="input-group">
-                <span class="input-group-addon"><i class="icon-lock"></i></span>
-                <input class="form-control" type="password" id="confirm_password" required name="confirm_password" placeholder="确认密码" >
-            </div>
+    <form action="${pageContext.request.contextPath}/member/${ member.id == null ? 'register' : 'update' }" method="post" novalidate id="register_form">
+        <div class="hidden">
+            <input name="id" type="hidden" value="${member.id}"/>
         </div>
         <div class="form-group">
             <div class="input-group">
                 <span class="input-group-addon"><i class="icon-user"></i></span>
-                <input class="form-control" type="text"  required name="name" placeholder="请输入您的姓名" />
+                <input class="form-control" type="text" value="${member.loginName}"  required name="loginName" onkeyup="this.value=this.value.replace(/[\W]/g,'')" placeholder="登录账号名不能为中文" />
             </div>
         </div>
+
+        <c:if test="${member.id == null}">
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="icon-lock"></i></span>
+                    <input class="form-control" type="password" id="password" required name="password" placeholder="请输入密码" >
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="icon-lock"></i></span>
+                    <input class="form-control" type="password"  id="confirm_password" required name="confirm_password" placeholder="确认密码" >
+                </div>
+            </div>
+        </c:if>
         <div class="form-group">
             <div class="input-group">
-                <span class="input-group-addon"><i class="icon-envelope"></i></span>
-                <input class="form-control" type="email"  name="email" placeholder="请输入您的邮箱地址" />
+                <span class="input-group-addon"><i class="icon-user"></i></span>
+                <input class="form-control" type="text" value="${member.name}" required name="name" placeholder="请输入您的姓名" />
             </div>
         </div>
         <div class="form-group">
             <div class="input-group">
                 <span class="input-group-addon"><i class="icon-mobile-phone "></i></span>
-                <input class="form-control" type="text"  required name="phoneNumber" placeholder="请输入您的手机号码" />
+                <input class="form-control" type="text" value="${member.phoneNumber}" required name="phoneNumber" placeholder="请输入您的手机号码" />
             </div>
         </div>
-        <input class="btn btn-lg btn-primary btn-block" type="submit" value="注册">
+        <c:if test="${member.id == null}">
+            <input class="btn btn-lg btn-primary btn-block" type="submit" value="注册">
+        </c:if>
+        <c:if test="${member.id != null}">
+            <input class="btn btn-lg btn-primary btn-block" type="submit" value="修改">
+        </c:if>
         <div class="social-login clearfix">
             <a class="btn btn-primary twitter" href="${pageContext.request.contextPath}/" >返回首页</a>
         </div>
@@ -92,9 +97,6 @@
                     required: true,
                     minlength: 6,
                     equalTo: "#password"
-                },
-                email: {
-                    email: true
                 }
             },
             messages: {
@@ -112,8 +114,7 @@
                     minlength: "密码长度不能小于6位",
                     equalTo: "两次密码不一致"
                 },
-                phoneNumber: '请输入正确的手机号码格式',
-                email: "请填写正确的邮箱地址"
+                phoneNumber: '请输入正确的手机号码格式'
             }
         });
     });

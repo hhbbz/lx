@@ -91,7 +91,7 @@ Fixed Navigation
                 <c:otherwise>
                     <h1 class="navbar-brand">
                         <span>
-                        <a href="#">${loginMember.name}</a>&nbsp;
+                        <a href="${pageContext.request.contextPath}/member/show/${loginMember.id}">${loginMember.name}</a>&nbsp;
                         <a href="${pageContext.request.contextPath}/member/logout">注销</a></span>
                     </h1>
                 </c:otherwise>
@@ -108,7 +108,9 @@ Fixed Navigation
                 <li><a href="#social">关于</a></li>
                 <li><a href="#contact">点餐</a></li>
                 <li><a href="#" id="cart">购物车</a></li>
-                <li><a href="#" id="register">注册</a></li>
+                <c:if test="${loginMember.id == null}">
+                    <li><a href="#" id="register">注册</a></li>
+                </c:if>
             </ul>
         </nav>
         <!-- /main nav -->
@@ -504,10 +506,10 @@ End Fixed Navigation
                     if(data.content[i].picture==null){
                         $("#product_list"+i).append("<img alt="+data.content[i].productType.name+" height="+370+" border="+0+" width="+280+" class=img-responsive src="+"/lx/resources/template/img/miss.PNG>")
                     }else{
-                        $("#product_list"+i).append("<img alt="+data.content[i].productType.name+" height="+370+" border="+0+" width="+280+" class=img-responsive src="+"/lx/resources/file/product/"+data.content[i].picture+">")
+                        $("#product_list"+i).append("<a href=${pageContext.request.contextPath}/detail/"+data.content[i].id+"><img alt="+data.content[i].productType.name+" height="+370+" border="+0+" width="+280+" class=img-responsive src="+"/lx/resources/file/product/"+data.content[i].picture+">")
                     }
 
-                    $("#product_list"+i).append("<figcaption class=mask><h3 id=name"+data.content[i].id+">"+data.content[i].name+"</h3><p>"+data.content[i].productType.name+"</p><p align=right id=money"+data.content[i].id+">￥"+data.content[i].money+"</p></figcaption>")
+                    $("#product_list"+i).append("<a href=${pageContext.request.contextPath}/detail/"+data.content[i].id+"><figcaption class=mask><h3 id=name"+data.content[i].id+">"+data.content[i].name+"</h3><p>"+data.content[i].productType.name+"</p><p align=right id=money"+data.content[i].id+">￥"+data.content[i].money+"</p></figcaption></a>")
                     $("#product_list"+i).append("<ul class=external><li>" +
                     "<a class=fancybox title="+data.content[i].name+" data-fancybox-group=works href="+"/lx/resources/file/product/"+data.content[i].picture+"><i class='fa fa-search'></i></a></li><li><a href='javascript:void(0)' onclick='link(\""+data.content[i].id+"\");'  id="+data.content[i].id+"><i class='fa fa-link'></i></a></li></ul>")
                 }
@@ -559,7 +561,7 @@ End Fixed Navigation
                 $._messengerDefaults = {
                     extraClasses: 'messenger-fixed messenger-theme-air  messenger-on-top messenger-on-left'
                 }
-                $.globalMessenger().post({  message:"提示：请您先登录",
+                $.globalMessenger().post({  message:"提示：您还未登录",
                     type: "error",
                     showCloseButton: true})
             })
@@ -585,7 +587,7 @@ End Fixed Navigation
                 $._messengerDefaults = {
                     extraClasses: 'messenger-fixed messenger-theme-air  messenger-on-top messenger-on-left'
                 }
-                $.globalMessenger().post({  message:"提示：请您先登录",
+                $.globalMessenger().post({  message:"提示：您还未登录",
                     type: "error",
                     showCloseButton: true})
             })

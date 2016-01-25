@@ -34,10 +34,10 @@ public class ProductController {
         model.addAttribute("product_list", this.productService.findAll());
         return "index";
     }
-    @RequestMapping("show/{id}")
+    @RequestMapping("detail/{id}")
     public String show(@PathVariable String id,Model model){
         model.addAttribute("product",this.productService.findOne(id));
-        return "show";
+        return "detail";
     }
     @RequestMapping("indexPagers")
     @ResponseBody

@@ -80,6 +80,10 @@
                         <value>/member/register</value>
                     </list>
                 </property>
+                <!-- 有权限限制的url -->
+                <property name="limitUrl">
+                    <value>/member/show/</value>
+                </property>
             </bean>
         </mvc:interceptor>
     </mvc:interceptors>

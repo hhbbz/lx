@@ -8,6 +8,8 @@ import aode.lx.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -80,6 +82,12 @@ public class MemberController {
     @RequestMapping("orders")
     public String orders(){
         return "orders";
+    }
+
+    @RequestMapping("show/{id}")
+    public String show(@PathVariable Long id ,Model model){
+        model.addAttribute(this.memberService.findOne(id));
+        return "registerUI" ;
     }
 
 }

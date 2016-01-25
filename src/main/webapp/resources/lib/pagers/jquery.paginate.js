@@ -240,7 +240,7 @@
 						$(this).css(a_css);
 					}
 					);
-					obj.css('padding-left',_first.parent().width() + 5 +'px');
+					obj.css('padding-left','480px');
 					insidewidth = 0;
 					
 					obj.find('li').each(function(i,n){
