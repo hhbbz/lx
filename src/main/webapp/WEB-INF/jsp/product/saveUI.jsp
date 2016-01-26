@@ -81,6 +81,7 @@
                                 <label class="control-label col-md-3">产品类型</label>
                                 <div class="col-md-7">
                                     <select class="form-control" name="productType">
+                                        <option value="${product.productType.id}" >${product.productType.name}:${product.productType.introduction}</option>
                                         <c:forEach items="${productType_list}" var="itm">
                                         <option value="${itm.id}">${itm.name}:${itm.introduction}</option>
                                         </c:forEach>

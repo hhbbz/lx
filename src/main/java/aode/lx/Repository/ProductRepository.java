@@ -22,6 +22,7 @@ public interface ProductRepository extends BaseJapRepository<Product,String> {
      * @param pageable
      * @return
      */
-    @QueryHints({@QueryHint(name=org.hibernate.ejb.QueryHints.HINT_CACHEABLE,value="true")})
+    @QueryHints({@QueryHint(name=org.hibernate.ejb.QueryHints.HINT_FETCH_SIZE,value="true")})
     Page<Product> findAll(Specification<Product> spec, Pageable pageable);
+
 }

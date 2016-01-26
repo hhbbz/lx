@@ -1,5 +1,7 @@
 package aode.lx.model;
 
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -8,6 +10,7 @@ import java.util.Date;
 *@date: 2015/6/19
 *@explain:
 */
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @Cacheable
 @Entity
 @Table(name="product")
@@ -77,5 +80,18 @@ public class Product {
 
     public void setMoney(double money) {
         this.money = money;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", money=" + money +
+                ", introduction='" + introduction + '\'' +
+                ", date=" + date +
+                ", picture='" + picture + '\'' +
+                ", productType=" + productType.getId() +
+                '}';
     }
 }

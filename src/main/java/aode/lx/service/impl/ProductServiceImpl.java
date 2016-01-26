@@ -81,6 +81,5 @@ public class ProductServiceImpl extends BaseServiceImpl<Product,String> implemen
                 this.attachmentService.save(attachment);
             }
         }
-
     }
 }

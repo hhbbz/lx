@@ -78,7 +78,7 @@ public class ProductController extends BaseAdminController<Product,String>{
         product.setIntroduction(introduction);
         product.setName(name);
         product.setMoney(money);
-        product.getProductType().setId(productType);
+        product.setProductType(this.productTypeService.findOne(productType));
         this.productService.update(product, picture);
         this.productService.save(product);
         return TEMPLATE_PATH+"list";
@@ -92,7 +92,6 @@ public class ProductController extends BaseAdminController<Product,String>{
     @RequestMapping("dataTable")
     @ResponseBody
     public Map dataTable(String searchText,int sEcho){
-        System.out.println(this.productService.dataTable(searchText,sEcho));
         return this.productService.dataTable(searchText,sEcho);
     }
 

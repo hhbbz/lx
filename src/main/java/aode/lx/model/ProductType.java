@@ -1,5 +1,8 @@
 package aode.lx.model;
 
+
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
 import javax.persistence.*;
 
 /**
@@ -7,6 +10,7 @@ import javax.persistence.*;
 *@date: 2015/6/19
 *@explain:
 */
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @Cacheable
 @Entity
 @Table(name = "product_type")
