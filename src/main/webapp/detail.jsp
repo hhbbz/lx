@@ -15,6 +15,9 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/normalize.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/base.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/pay.css">
+    <style type="text/css">
+        .img-responsive{display:block;height:500px;width:650px}
+    </style>
     <script src="${pageContext.request.contextPath}/resources/js/jquery.min.js"></script><!-- main jquery -->
     <!-- 消息弹框 -->
     <script src="${pageContext.request.contextPath}/resources/lib/messenger/build/js/messenger.min.js"></script>
@@ -26,7 +29,7 @@
 <article class="flex-col  pay-main">
     <section class="pay-wrap flex-row container">
         <div class="products-img flex-row">
-            <img src="${pageContext.request.contextPath}/resources/file/product/${product.picture}"/>
+            <img class="img-responsive"src="${pageContext.request.contextPath}/resources/file/product/${product.picture}"/>
         </div>
         <div class="pay-info">
 
